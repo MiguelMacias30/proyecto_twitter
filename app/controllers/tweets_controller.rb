@@ -5,6 +5,9 @@ class TweetsController < ApplicationController
   # GET /tweets.json
   def index
     @tweets = Tweet.all
+    if user_signed_in?
+        @tweets = Tweet.paginate(:page => params[:page], :per_page => 2)
+    end
   end
 
   # GET /tweets/1
