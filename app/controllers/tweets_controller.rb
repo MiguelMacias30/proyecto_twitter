@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.all
     if user_signed_in?
-        @tweets = Tweet.paginate(:page => params[:page], :per_page => 2)
+        @tweets = Tweet.paginate(:page => params[:page], :per_page => 50)
     end
   end
 
