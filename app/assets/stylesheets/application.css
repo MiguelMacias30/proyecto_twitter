@@ -13,3 +13,83 @@
  *= require_tree .
  *= require_self
  */
+body{
+	background-color: white;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+.title{
+	color:#00acee;
+	font-weight: lighter;
+	font-size: 25px;
+}
+.card{
+	background-color: white;	
+}
+
+.slider{
+  height: 100vh;
+  width:  100vh;
+}
+
+.color{
+	background:#00acee;
+	color: white;
+	margin: 15;
+	font-weight: 700;
+	font-size: 25px;
+	padding-top:200px;
+	padding-left: 120px;
+}
+.texto{
+	padding-top:180px;
+	padding-left: 100px;	
+}
+.p{
+	font-weight: bold;
+	font-size: 40px;
+}
+.p1{
+	font-weight: bold;
+	font-size: 20px;
+}
+.texto i{
+	font-size:80px;
+	color:#00acee;
+}
+h2{
+	font-weight: bold;
+	font-size: 40px;
+}
+
+.devise{
+	font-size:80px;
+	color:#00acee;
+}
+
+.text{
+	font-weight: bold;
+	font-size: 20px;
+
+}
+
+.navbar i{
+	color:white;
+	font-size:40px;
+}
+.na{
+	background-color:#00acee;
+}
+.imgredonda img{
+	border-radius: 25px;
+}
+.content{
+	margin-left: 50px;	
+}
+
+.colorb{
+	color: #00acee;
+}
+
+.ima {
+	margin-left: 20px;
+}

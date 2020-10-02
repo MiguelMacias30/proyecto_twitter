@@ -1,3 +1,23 @@
-<h1>Twitter</h1>
-	<%= link_to "iniciar sesion", new_user_session_path %> 
-	<%= link_to "registrarse", new_user_registration_path %>
+<div class="container-fluid">
+        
+  <div class="row">
+           
+   <div class="col-6 slider color display-5">
+                   
+      <p class="my-5 "><i class="fas fa-search"></i><span class="ima">Sigue lo que te interesa.</span></p>
+  	  <p class="my-5"><i class="fas fa-user-friends"></i><span class="ima">Entérate de qué está hablando la gente.</span></p>
+      <p class="my-5"><i class="far fa-comment"></i><span class="ima">Únete a la conversación.</span></p>    
+                     
+     </div>
+
+ <div class="col-6 texto">
+      
+     <i class="fab fa-twitter"></i>              
+     <p class="p">Mira lo que esta pasando en el mundo en este momento</p>
+     <p class="p1">Unete a Twitter hoy mismo</p>
+     <button type="button"class="btn btn-outline-primary"><%= link_to "iniciar sesion", new_user_session_path %></button> <br><br>
+	  <button type="button"class="btn btn-outline-primary"><%= link_to "registrarse", new_user_registration_path %></button>
+     </div> 
+    </div> 
+   </div>
+        

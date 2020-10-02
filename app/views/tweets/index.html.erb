@@ -1,29 +1,62 @@
-<p id="notice">Bienvenido</p>
-<%= link_to "cerrar sesion", destroy_user_session_path, method: :delete%>
+<nav class=" na navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#"><i class="fab fa-twitter"></i></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div class="">
-    <%= link_to :Twitter, root_path, class:'display-2 h1 text-primary d-flex justify-content-center '%>
-    <br>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+      </li>
+    </ul>
+    
+     <div class="text field d-flex justify-content-end">
+      <%= link_to "cerrar sesion", destroy_user_session_path, method: :delete%>
+    </div>
+   
+  </div>
+</nav>
+
+
+
+
+
+
+
+<div class="container">
+  <div class="">
      <%= form_with(url:'/tweets/new', local: true, class:'form-group d-flex justify-content-center') do |form| %>
+     </div>
+   <div class="w-50 ">
 
-  <div class="w-50">
-    <%= form.text_area :content, cols:30, rows:1, placeholder:'¿que estas pensando', class:'form-control' %>
+    <%= form.text_area :content, cols:40, rows:4, placeholder:'¿que estas pensando?',  class:'form-control' %>
+
   </div>
 
  
   <div class="">
     <%= form.submit :tweet, class:'btn btn-primary' %>
   </div>
+  <p id="notice" class="title">Bienvenido</p>
 <% end %>
 
-  </div>
+  
  
 
     <% @tweets.order(created_at: :desc).each do |tweet| %>
-    <div class="card my-5 bg-info mx-0">
+    <div class="card my-5  mx-0">
+
   <div class="dropdown ml-auto">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+  <button class=" colorb btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    
   </button>
   <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
     <% if current_user == tweet.user %>
@@ -36,16 +69,18 @@
       
   </div>
 </div>
-
-  <div class="card-header">
+  
+  <div class="imgredonda">
     <img src="<%= tweet.user.image%>" width="50px" heigth="50px" alt="">
-     <%= link_to tweet.user.name, class:"" %>
+     <%= tweet.user.name %> <br>
+    <span class="content"><%= tweet.content %></span>
   </div>
-  <div class="card-body">
-    <h5 class="card-title"></h5>
-    <p class="card-text"><%= tweet.content %></p>
-  </div>
+  
 </div>
 
 <% end %>
 <%= will_paginate @tweets %>
+</div>
+
+
+
