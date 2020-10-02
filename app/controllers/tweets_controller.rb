@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-   before_action :authenticate_user!, except:[:show, :index]
+  before_action :authenticate_user!, except:[:show, :index]
   # GET /tweets
   # GET /tweets.json
   def index
@@ -8,6 +8,7 @@ class TweetsController < ApplicationController
     if user_signed_in?
         @tweets = Tweet.paginate(:page => params[:page], :per_page => 50)
     end
+
   end
 
   # GET /tweets/1

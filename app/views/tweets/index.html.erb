@@ -1,91 +1,93 @@
-<nav class=" na navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#"><i class="fab fa-twitter"></i></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <nav class=" na navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#"><i class="fab fa-twitter"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+        </li>
+      </ul>
       
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
-      </li>
-    </ul>
-    
-     <div class="text field d-flex justify-content-end">
-      <%= link_to "cerrar sesion", destroy_user_session_path, method: :delete%>
+       <div class="text field d-flex justify-content-end">
+        <%= link_to "cerrar sesion", destroy_user_session_path, method: :delete%>
+      </div>
+     
     </div>
+  </nav>
+
+
+
+
+
+
+
+  <div class="container">
+    <div class="">
+       <%= form_with(url:'/tweets/new', local: true, class:'form-group d-flex justify-content-center') do |form| %>
+       </div>
+     <div class="w-50 ">
+
+      <%= form.text_area :content, cols:40, rows:4, placeholder:'¿que estas pensando?',  class:'form-control' %>
+
+    </div>
+
    
-  </div>
-</nav>
+    <div class="">
+      <%= form.submit :tweet, class:'btn btn-primary' %>
+    </div>
+    <p id="notice" class="title">Bienvenido</p>
+  <% end %>
 
-
-
-
-
-
-
-<div class="container">
-  <div class="">
-     <%= form_with(url:'/tweets/new', local: true, class:'form-group d-flex justify-content-center') do |form| %>
-     </div>
-   <div class="w-50 ">
-
-    <%= form.text_area :content, cols:40, rows:4, placeholder:'¿que estas pensando?',  class:'form-control' %>
-
-  </div>
-
- 
-  <div class="">
-    <%= form.submit :tweet, class:'btn btn-primary' %>
-  </div>
-  <p id="notice" class="title">Bienvenido</p>
-<% end %>
-
-  
- 
-
-    <% @tweets.order(created_at: :desc).each do |tweet| %>
-    <div class="card my-5  mx-0">
-
-  <div class="dropdown ml-auto">
-  <button class=" colorb btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     
-  </button>
-  <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-    <% if current_user == tweet.user %>
-  <%= link_to 'Show', tweet, class:'dropdown-item' %>
-  <%= link_to 'Edit', edit_tweet_path(tweet), class:'dropdown-item' %>
-  <%= link_to 'Destroy', tweet, class:'dropdown-item', method: :delete, data: { confirm: 'Are you sure?' } %>
-   <% else %>
-        <%= link_to 'Show', tweet, class:'dropdown-item'%>
-    <% end %>
-      <% pre_like = tweet.likes.find { |like| like.user_id == current_user.id} %>
-      <% if pre_like %>
-           <span><%= tweet.likes.count %> <%= (tweet.likes.count) == 1 ? 'Like' : 'Likes'%></span><%= button_to 'Unlike', tweet_like_path(tweet, pre_like), method: :delete %>
-      <% else %>
-          <span><%= tweet.likes.count %> <%= (tweet.likes.count) == 1 ? 'Like' : 'Likes'%></span><%= button_to 'Like', tweet_likes_path(tweet), method: :post %>
-      <% end %>
-  </div>
-</div>
-  
-  <div class="imgredonda">
-    <img src="<%= tweet.user.image%>" width="50px" heigth="50px" alt="">
-     <%= tweet.user.name %> <br>
-    <span class="content"><%= tweet.content %></span>
-  </div>
-  
-</div>
+   
 
-<% end %>
-<%= will_paginate @tweets %>
-</div>
+      <% @tweets.order(created_at: :desc).each do |tweet| %>
+      <div class="card my-5  mx-0">
+
+    <div class="dropdown ml-auto">
+    <button class=" colorb btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+    </button>
+    <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+      <% if current_user == tweet.user %>
+    <%= link_to 'Show', tweet, class:'dropdown-item' %>
+    <%= link_to 'Edit', edit_tweet_path(tweet), class:'dropdown-item' %>
+    <%= link_to 'Destroy', tweet, class:'dropdown-item', method: :delete, data: { confirm: 'Are you sure?' } %>
+     <% else %>
+          <%= link_to 'Show', tweet, class:'dropdown-item'%>
+      <% end %>
+        <% pre_like = tweet.likes.find { |like| like.user_id == current_user.id} %>
+        <% if pre_like %>
+             <span><%= tweet.likes.count %> <%= (tweet.likes.count) == 1 ? 'Like' : 'Likes'%></span><%= button_to 'Unlike', tweet_like_path(tweet, pre_like), method: :delete %>
+        <% else %>
+            <span><%= tweet.likes.count %> <%= (tweet.likes.count) == 1 ? 'Like' : 'Likes'%></span><%= button_to 'Like', tweet_likes_path(tweet), method: :post %>
+        <% end %>
+    </div>
+  </div>
+    
+    <div class="imgredonda">
+      <img src="<%= tweet.user.image%>" width="50px" heigth="50px" alt="">
+       <%= tweet.user.name %> <br>
+      <span class="content"><%= tweet.content %></span>
+      <span class="content "><%=link_to  time_ago_in_words(tweet.created_at), tweet %></span>
+     
+    </div>
+    
+  </div>
+
+  <% end %>
+  <%= will_paginate @tweets %>
+  </div>
 
 
 
